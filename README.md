@@ -1,6 +1,6 @@
 # Заметки по книге Web Performance in Action
 
-## Глава 1
+## Глава 1 (Understanding web performance)
 
 ### 1.1.2. How web browsers talk to web servers 
 
@@ -63,5 +63,10 @@
 
 Наибольший прирост к скорости загрузки был после оптимизации изображений - **30%** на тестовой странице, против **10%** у сжатия css, js и **14%** после использования сжатия на сервере
 
-## Глава 2
+## Глава 2 (Using assessment tools)
 
+[Google PageSpeed Insight](https://developers.google.com/speed/pagespeed/insights/)  
+
+inline-CSS (вставленый через `<style>`) позволяет загружать стили одновременно с HTML, сокращает HTTP-запросы, что хорошо для серверов с `HTTP/1`, увеличивает скорость рендеринга документа, но не кэшируется  
+
+`Google Analytic`  
