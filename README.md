@@ -38,9 +38,18 @@
 Слева направо: оригинальная картинка, оптимизация с помощью `ImageOptim`, оптимизация с помощью `tinypng.com`  
 
 <div width="100%">
-	<img src="./images/optimazeImage/Kerastase_ORIG.png" alt="ORIG" width="280px">
-	<img src="./images/optimazeImage/Kerastase_ImageOptim.png" alt="ImageOptim" width="280px">
-	<img src="./images/optimazeImage/Kerastase_TINYPNG.png" alt="TINYPNG" width="280px">
+	<div style="display: inline-block;width: 280px;text-align: center;">
+		<img src="./images/optimazeImage/Kerastase_ORIG.png" alt="ORIG" width="100%">
+		<span>оригинал - 127КБ</span>
+	</div>
+	<div style="display: inline-block;width: 280px;text-align: center;">
+		<img src="./images/optimazeImage/Kerastase_ImageOptim.png" alt="ImageOptim" width="100%">
+		<span>оригинал - 120КБ</span>
+	</div>
+	<div style="display: inline-block;width: 280px;text-align: center;">
+		<img src="./images/optimazeImage/Kerastase_TINYPNG.png" alt="TINYPNG" width="100%">
+		<span>оригинал - 30КБ</span>
+	</div>
 </div>
 
 ### 1.6. Summary
