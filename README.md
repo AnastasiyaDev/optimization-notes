@@ -37,20 +37,22 @@
 
 Слева направо: оригинальная картинка, оптимизация с помощью `ImageOptim`, оптимизация с помощью `tinypng.com`  
 
-<div width="100%">
-	<div style="display: inline-block;width: 280px;text-align: center;">
-		<img src="./images/optimazeImage/Kerastase_ORIG.png" alt="ORIG" width="100%">
-		<span>оригинал - 127КБ</span>
-	</div>
-	<div style="display: inline-block;width: 280px;text-align: center;">
-		<img src="./images/optimazeImage/Kerastase_ImageOptim.png" alt="ImageOptim" width="100%">
-		<span>оригинал - 120КБ</span>
-	</div>
-	<div style="display: inline-block;width: 280px;text-align: center;">
-		<img src="./images/optimazeImage/Kerastase_TINYPNG.png" alt="TINYPNG" width="100%">
-		<span>оригинал - 30КБ</span>
-	</div>
-</div>
+<table cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td width="280px" align="center">
+			<img src="./images/optimazeImage/Kerastase_ORIG.png" alt="ORIG" width="100%">
+			<span>оригинал - 127КБ</span>
+		</td>
+		<td width="280px" align="center">
+			<img src="./images/optimazeImage/Kerastase_ImageOptim.png" alt="ImageOptim" width="100%">
+			<span>ImageOptim - 120КБ</span>
+		</td>
+		<td width="280px" align="center">
+			<img src="./images/optimazeImage/Kerastase_TINYPNG.png" alt="TINYPNG" width="100%">
+			<span>TINYPNG - 30КБ</span>
+		</td>
+	</tr>
+</table>
 
 ### 1.6. Summary
 
