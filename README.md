@@ -1,4 +1,4 @@
-# Заметки по книге Web Performance in Action
+# Заметки по книге [Web Performance in Action](https://www.dropbox.com/s/rjt175gbuhc705x/Wagner%20J.%20-%20Web%20Performance%20in%20Action.%20Building%20Faster%20Web%20Pages%20-%202016.PDF?dl=0)
 
 ## Глава 1 (Understanding web performance)
 
@@ -70,3 +70,15 @@
 inline-CSS (вставленый через `<style>`) позволяет загружать стили одновременно с HTML, сокращает HTTP-запросы, что хорошо для серверов с `HTTP/1`, увеличивает скорость рендеринга документа, но не кэшируется  
 
 `Google Analytic`  
+
+### 2.3.1. Viewing timing information  
+
+Можно почитать об это в [документации от гугл](https://developers.google.com/web/tools/chrome-devtools/network-performance/reference#timing-explanation)  
+
+
+`Time to First Byte(TTFB)` - количество времени между моментом, когда пользователь запрашивает веб-страницу и 
+моментом поступления первого байта ответа  
+
+`Developer Tools` - чтобы устранинить задержку браузер создает `DNS lookup cache`  
+
+### 2.3.2. Viewing HTTP request and response headers (70)
