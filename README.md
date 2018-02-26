@@ -99,3 +99,20 @@ inline-CSS (вставленый через `<style>`) позволяет заг
 
 ### 2.4.2. Using Google Chrome’s Timeline tool (Performance)
 
+Инструмент фиксирует четыре конкретных типа событий, каждый из которых имеет цветную кодировку:
+
+* Loading (Blue)—Network-related events such as HTTP requests. It also includes activity such as the parsing of HTML, CSS, and image decoding.  
+* Scripting (Yellow)—JavaScript-related events. These can range from DOM-specific activity, to garbage collection, to site-specific JavaScript, and to other activity.  
+* Rendering (Purple)—Any and all events relating to page rendering. Events in this category are activities such as applying CSS to the page HTML, and events that cause re-rendering such as changes to the page’s HTML triggered by JavaScript.  
+* Painting (Green)—Events related to drawing the layout to the screen, such as layer compositing and rasterization.  
+* Other activity - состоит из активности процессора, которую Chrome не может сломать(?) и представить на диаграмме.  
+
+Продолжила изучать [здесь](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/), в книге не совсем актуальные данные, сложнее сопоставлять
+
+1. Первая диаграма **FPS** - чем выше зеленые полосы, тем вышеше *FPS*, красная линия - просидания.  
+2. Цвета в диаграмме **CPU** соответствуют цветам на вкладке `Summary`. Если диаграмма **CPU** полона цветом, значит, что CPU был перегружен во время записи.  
+3. Раздел **Frames** - выбор зеленого квадрата, показывает количество **FPS**.  
+4. Раздел **Main** -  Каждый бар представляет собой событие. Более широкий бар означает, что событие заняло больше времени. Ось-y представляет стек вызовов. Когда вы видите события, укладываются друг на друга. При выборе события на шкале времени, если у него есть красный треугольник в верхнем левом углу, то это плохо. Клик на событие -> внизу в `Summary` -> `reveal` -> 
+событие, инициировавшее текущие событие -> `Details` (ссылка на строку кода)
+
+
