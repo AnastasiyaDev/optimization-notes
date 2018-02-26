@@ -97,4 +97,5 @@ inline-CSS (вставленый через `<style>`) позволяет заг
 
 Изменения на страницы приводят к повторному рендерингу.  
 
+### 2.4.2. Using Google Chrome’s Timeline tool (Performance)
 
