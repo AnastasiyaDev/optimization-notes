@@ -1,4 +1,4 @@
-# Заметки по книге [Web Performance in Action](https://www.dropbox.com/s/rjt175gbuhc705x/Wagner%20J.%20-%20Web%20Performance%20in%20Action.%20Building%20Faster%20Web%20Pages%20-%202016.PDF?dl=0)
+# Заметки по книге [Web Performance in Action](https://www.dropbox.com/s/rjt175gbuhc705x/Wagner%20J.%20-%20Web%20Performance%20in%20Action.%20Building%20Faster%20Web%20Pages%20-%202016.PDF?dl=0) и не только
 
 ## Глава 1 (Understanding web performance)
 
@@ -115,7 +115,13 @@ inline-CSS (вставленый через `<style>`) позволяет заг
 4. Раздел **Main** -  Каждый бар представляет собой событие. Более широкий бар означает, что событие заняло больше времени. Ось-y представляет стек вызовов. Когда вы видите события, укладываются друг на друга. При выборе события на шкале времени, если у него есть красный треугольник в верхнем левом углу, то это плохо. Клик на событие -> внизу в `Summary` -> `reveal` -> 
 событие, инициировавшее текущие событие -> `Details` (ссылка на строку кода)
 
+# Best Practices 
+### 1 Использовать `rel="noopener"`
+Если у ссылки есть `target="_blank"` то нужно прописать ей `rel="noopener"`, для этого есть пара причин, первое - безопасность, если это ссылка на внешний ресурс, то внешний ресурс будет иметь возможность доступа к `window.opener`, второе - 
+производительность, окна, запущенные через `target="_blank"` работают в одном процессе и потоке `rel="noopener"` предотвращает работу `window.opener` и кроссдоменный доступ. Основанные на Chromium браузеры создают для новых страниц собственные процессы.
+
 
 # Ресурсы 
+* Плагин [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk), таба **Audits** доступна в Chrome DevTools
 * Google новый инструмент - [Speed Scorecard](https://www.thinkwithgoogle.com/feature/mobile/), который позволяет сравнивать скорость загрузки мобильного сайта с другими интернет-ресурсами. Speed Scorecard отображает скорость загрузки тысяч мобильных сайтов из 12 стран по всему миру (России пока нет).
 
