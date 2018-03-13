@@ -152,14 +152,11 @@ for (var p = 0; p < paragraphs.length; p++) {
 ```
 Now it’s read-write-write-write. 
 
-### Границы слоя
+### 7. Границы слоя
 У блоков в дереве DOM можно выделить слои, за которые перересовка дерева не выйдет (в табе **Rendering** можно включить показ границ слоев), чтобы создать у элемента искуственные границы можено воспользоваться свойствами `translateZ(0) or backface-visibility: hidden` . Подробнее [раздел 4. Paint Storms](https://calendar.perfplanet.com/2013/the-runtime-performance-checklist/)
 
 
-
 # Ресурсы 
-* Плагин [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk), таба **Audits** доступна в Chrome DevTools
-* Google новый инструмент - [Speed Scorecard](https://www.thinkwithgoogle.com/feature/mobile/), который позволяет сравнивать скорость загрузки мобильного сайта с другими интернет-ресурсами. Speed Scorecard отображает скорость загрузки тысяч мобильных сайтов из 12 стран по всему миру (России пока нет).  
 * [документатция от Гугла по Chrome DevTools](https://developers.google.com/web/fundamentals/performance/why-performance-matters/)
 
 
@@ -168,3 +165,8 @@ Now it’s read-write-write-write.
 Включить - открыть панель разработчика, далее `Cmd+Shift+P`, вводим `Show Rendering` - появится таба **Rendering**, на ней:  
 * **Paint Flashing** - всякий раз, когда часть страницы перерисовывается, DevTools выделяет этот раздел зеленым цветом.
 
+### 2. Плагин [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk)
+таба **Audits** доступна в Chrome DevTools
+
+### 3. [Speed Scorecard](https://www.thinkwithgoogle.com/feature/mobile/)
+Новый инструмент от Google, который позволяет сравнивать скорость загрузки мобильного сайта с другими интернет-ресурсами. Speed Scorecard отображает скорость загрузки тысяч мобильных сайтов из 12 стран по всему миру (России пока нет).  
