@@ -114,7 +114,20 @@ inline-CSS (вставленый через `<style>`) позволяет заг
 событие, инициировавшее текущие событие -> `Details` (ссылка на строку кода)
 
 ### 2.4.3. Identifying problem events: thy enemy is jank
-**Jank-эффект** - взаимодействия и анимации, которые подтормаживают или не выглядят плавно. Причина слишком много процессорного времени потребляется в течение одного кадра (фрейма). 
+**Jank-эффект** - взаимодействия и анимации, которые подтормаживают или не выглядят плавно. Причина слишком много процессорного времени потребляется в течение одного кадра (фрейма). [Игра](http://jakearchibald.github.io/jank-invaders)
+
+### 2.4.4. Marking points in the timeline with JavaScript
+Можно поставить через JS сво метку, которая по событию появиться на таймлайне в панеле Network. 
+
+```
+console.timeStamp('Modal open');
+```
+### 2.5. Benchmarking JavaScript in Chrome
+```
+1.console.time("jQuery"); jQuery("#schedule"); console.timeEnd("jQuery");  - 0.323ms
+2.console.time("querySelector"); document.querySelector("#schedule"); console .timeEnd("querySelector"); - 0.069ms
+```
+
 
 # Best Practices 
 ### 1. Использовать `rel="noopener"`
