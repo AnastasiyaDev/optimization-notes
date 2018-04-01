@@ -211,3 +211,6 @@ Now it’s read-write-write-write.
 
 ### 5. [Pingdom](https://tools.pingdom.com)
 Онлайн ресурс с подробной статистикой по странице, сразу видно сколько она весит, сколько грузится, все запросы, хороший и удобный ресурс, но слишком частые проверки приводят к сокращению времени загрузки, вероятно из-за кеширования + иногда приходится постоять в очереди  
+
+### 6. Оптимизация видео 
+`ffmpeg -i input.mp4 -movflags faststart -acodec copy -vcodec copy output.mp4` - [подробнее](http://denis-zavgorodny.github.io/2017/01/30/mp4-web-optimizing/), [утилита](https://www.ffmpeg.org/)
