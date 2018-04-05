@@ -127,6 +127,14 @@ console.timeStamp('Modal open');
 1.console.time("jQuery"); jQuery("#schedule"); console.timeEnd("jQuery");  - 0.323ms
 2.console.time("querySelector"); document.querySelector("#schedule"); console .timeEnd("querySelector"); - 0.069ms
 ```
+## Глава 3 (Optimizing CSS)
+
+* DRY (don’t repeat yourself).  
+* Писать сокращенными правилами (`padding, margin, font`)  
+* Не усложнять селекторы, чем вложенность меньше, тем лучше, в идеале < 3.  
+* Грузить только те стили, которые нужны на конкретной странице.  
+* 
+
 
 
 # Best Practices 
