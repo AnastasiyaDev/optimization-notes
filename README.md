@@ -133,8 +133,16 @@ console.timeStamp('Modal open');
 * Писать сокращенными правилами (`padding, margin, font`)  
 * Не усложнять селекторы, чем вложенность меньше, тем лучше, в идеале < 3.  
 * Грузить только те стили, которые нужны на конкретной странице.  
-* 
+* Стараться не использовать `@import` в CSS (не в предпроцессарах, а именно в CSS). `@import` делает запросы последовательно, а `<link>` - параллельно.  
+*  `<link>` должны быть в `<head> `.  
+* **CSS transition** быстрее, чем **Query animate()**.  
+* Использовать `will-change`.  
 
+Скорость суммы процессов рендеринга и отрисовки в зависимости от выбора css-селектора:  
+
+![](/images/css-selectors.png)
+
+## Глава 4 (Understanding critical CSS)
 
 
 # Best Practices 
@@ -177,6 +185,11 @@ Now it’s read-write-write-write.
 ### 7. Границы слоя
 У блоков в дереве DOM можно выделить слои, за которые перересовка дерева не выйдет (в табе **Rendering** можно включить показ границ слоев), чтобы создать у элемента искуственные границы можено воспользоваться свойствами `translateZ(0) or backface-visibility: hidden` . Подробнее [раздел 4. Paint Storms](https://calendar.perfplanet.com/2013/the-runtime-performance-checklist/)
 
+### 8. viewport
+```
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+```
+`width=device-width` - сообщает браузеру, что нужна область просмотра контента, равная ширине экрана мобильного устройства.
 
 # Полезные ссылки 
 * [документатция от Гугла по Chrome DevTools](https://developers.google.com/web/fundamentals/performance/why-performance-matters/)
