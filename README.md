@@ -13,7 +13,6 @@
 Далее в главе немного о `Chrome Dev Tools` (ничего нового).  
 Вес страницы для устройств с ретиной больше чем на устройствах со стандартной плотностью отображения.  
 
-
 ### 1.4 Optimizing the client’s website
 
 При улучшении производительности веб-сайта цель проста: уменьшить объем переданных данных (эта простая концепция работает как для `HTTP/1`, так и для `HTTP/2`). Надо начать с минимизации ресурсов сайта, включая CSS, JavaScript и HTML-код, картинки  
@@ -63,6 +62,7 @@
 
 Наибольший прирост к скорости загрузки был после оптимизации изображений - **30%** на тестовой странице, против **10%** у сжатия css, js и **14%** после использования сжатия на сервере
 
+
 ## Глава 2 (Using assessment tools)
 
 inline-CSS (вставленый через `<style>`) позволяет загружать стили одновременно с HTML, сокращает HTTP-запросы, что хорошо для серверов с `HTTP/1`, увеличивает скорость рендеринга документа, но не кэшируется  
@@ -72,7 +72,6 @@ inline-CSS (вставленый через `<style>`) позволяет заг
 ### 2.3.1. Viewing timing information  
 
 Можно почитать об это в [документации от гугл](https://developers.google.com/web/tools/chrome-devtools/network-performance/reference#timing-explanation)  
-
 
 `Time to First Byte(TTFB)` - количество времени между моментом, когда пользователь запрашивает веб-страницу и 
 моментом поступления первого байта ответа  
@@ -127,6 +126,8 @@ console.timeStamp('Modal open');
 1.console.time("jQuery"); jQuery("#schedule"); console.timeEnd("jQuery");  - 0.323ms
 2.console.time("querySelector"); document.querySelector("#schedule"); console .timeEnd("querySelector"); - 0.069ms
 ```
+
+
 ## Глава 3 (Optimizing CSS)
 
 * DRY (don’t repeat yourself).  
@@ -142,7 +143,16 @@ console.timeStamp('Modal open');
 
 ![](/images/css-selectors.png)
 
+
 ## Глава 4 (Understanding critical CSS)
+`<style>` в `<head>` и в нем все стили касающиеся первого видимого окна, они не кешируются, зато быстро отрисовываются, сокращается время до **First Paint** (см. пункт Инструменты, Прогрессивные веб-метрики)
+
+### 4.2.2.Loading below-the-fold styles 
+
+Использование нового стандарта `<link rel="preload">` - [статья на русском](http://prgssr.ru/development/dlya-chego-stoit-ispolzovat-predzagruzku.html), [браузерная поддержка](https://caniuse.com/#search=preload)
+
+
+## Глава 5 (Making images responsive)
 
 
 # Best Practices 
