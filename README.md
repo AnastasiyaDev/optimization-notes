@@ -153,7 +153,38 @@ console.timeStamp('Modal open');
 
 
 ## Глава 5 (Making images responsive)
+Время отрисовки на четверть меньше для не масштабируемых избражений (т.е. не грузить картинки шириной больше, чем размер экрана устройства), а время рендеринга ~на восьмую часть
 
+### 5.2.3.Knowing what image formats to use 
+Есть формат WebP от гугла, релиз 2010 года, формат интересный и полезный для более эффетивного сжатия для избражений с прозрасностью, но (поддержка)[https://caniuse.com/#feat=webp] плоха до сих пор. (Онлайн-конвектор)[https://pastebin.com/QNKmkfKz]
+
+### 5.3.2.Targeting high DPI displays with media queries 
+```
+@media screen (-webkit-min-device-pixel-ratio: 2), (min-resolution:  192dpi) {/*  Put  High  DPI  Styles  Here  */} 
+@media screen (-webkit-min-device-pixel-ratio: 2), (min-resolution:  192dpi), and (min-width:  105em) {}
+```
+### 5.4.1.The universal max-width rule for images  
+```
+img {
+    max-width: 100%;
+}
+```
+
+### 5.4.2.Using srcset 
+Не респонсивный вариант, при изменении ширины экрана загружает картинки только при увеличении разрешения, при уменьшении ничего не происходит, грузит первую большую картинку и дальше резайзит ее. 
+
+```
+<img src="image-small.jpg" 
+     srcset="image-medium.jpg 640w, image-large.jpg 1280w">
+```
+Добавление атрибута `sizes` дает больше возможностей, при ширине 704px картинка занимает половину ширины экрана - 50vw, при 480px - 75vw ширины и подефолту - 100vw
+
+```
+<img src="img/amp-xsmall.jpg"
+     class="articleImageFull"
+     srcset="img/amp-small.jpg 512w, img/amp-medium.jpg 768w, img/amp-large.jpg 1280w"
+     sizes="(min-width:  704px) 50vw,  (min-width:  480px) 75vw, 100vw">
+```
 
 # Best Practices 
 ### 1. Использовать `rel="noopener"`
@@ -200,6 +231,8 @@ Now it’s read-write-write-write.
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 ```
 `width=device-width` - сообщает браузеру, что нужна область просмотра контента, равная ширине экрана мобильного устройства.
+
+### 9. Для всех изображений `max-width: 100%;`
 
 # Полезные ссылки 
 * [документатция от Гугла по Chrome DevTools](https://developers.google.com/web/fundamentals/performance/why-performance-matters/)
