@@ -185,6 +185,41 @@ img {
      srcset="img/amp-small.jpg 512w, img/amp-medium.jpg 768w, img/amp-large.jpg 1280w"
      sizes="(min-width:  704px) 50vw,  (min-width:  480px) 75vw, 100vw">
 ```
+### 5.4.3.Using the `<picture>` element  
+
+Для больших экранов браузер сам выберет какую картинку ему подтянуть, для маленьких кранов он будет выбирать картинку в соответствии с DPI (1x или 2x): 
+```
+<picture>
+    <source media="(min-width: 704px)"
+            srcset="img/amp-medium.jpg 384w,
+		    img/amp-large.jpg 512w"
+	    sizes="33.3vw">
+    <source srcset="img/amp-cropped-small.jpg 1x,
+		    img/amp-cropped-medium.jpg 2x"
+	    sizes="75vw">
+    <img src="img/amp-small.jpg">
+</picture>
+```
+
+У `<picture>` есть еще атрибут `type`, позволяющий использовать изображения форматов, которые плохо поддерживаются, например **webp**:
+```
+<picture>
+    <source srcset="img/amp-small.webp" type="image/webp">
+    <img src="img/amp-small.jpg">
+</picture>
+```
+	
+### 5.4.4.Polyfilling support with Picturefill
+Не забыть добавить элемент `<picture>` для браузеров, которые его не поддерживают, а затем подключить полифилл
+
+```
+<script>document.createElement("picture");</script>
+<script src="js/picturefill.min.js" async></script>
+``` 
+
+
+# Глава 6 (Going further with images)
+
 
 # Best Practices 
 ### 1. Использовать `rel="noopener"`
