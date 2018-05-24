@@ -147,7 +147,7 @@ console.timeStamp('Modal open');
 ## Глава 4 (Understanding critical CSS)
 `<style>` в `<head>` и в нем все стили касающиеся первого видимого окна, они не кешируются, зато быстро отрисовываются, сокращается время до **First Paint** (см. пункт Инструменты, Прогрессивные веб-метрики)
 
-### 4.2.2.Loading below-the-fold styles 
+### 4.2.2. Loading below-the-fold styles 
 
 Использование нового стандарта `<link rel="preload">` - [статья на русском](http://prgssr.ru/development/dlya-chego-stoit-ispolzovat-predzagruzku.html), [браузерная поддержка](https://caniuse.com/#search=preload)
 
@@ -155,22 +155,22 @@ console.timeStamp('Modal open');
 ## Глава 5 (Making images responsive)
 Время отрисовки на четверть меньше для не масштабируемых избражений (т.е. не грузить картинки шириной больше, чем размер экрана устройства), а время рендеринга ~на восьмую часть
 
-### 5.2.3.Knowing what image formats to use 
-Есть формат WebP от гугла, релиз 2010 года, формат интересный и полезный для более эффетивного сжатия для избражений с прозрасностью, но (поддержка)[https://caniuse.com/#feat=webp] плоха до сих пор. (Онлайн-конвектор)[https://pastebin.com/QNKmkfKz]
+### 5.2.3. Knowing what image formats to use 
+Есть формат WebP от гугла, релиз 2010 года, формат интересный и полезный для более эффетивного сжатия для избражений с прозрасностью, но [поддержка](https://caniuse.com/#feat=webp) плоха до сих пор. [Онлайн-конвектор](https://pastebin.com/QNKmkfKz)
 
-### 5.3.2.Targeting high DPI displays with media queries 
+### 5.3.2. Targeting high DPI displays with media queries 
 ```
 @media screen (-webkit-min-device-pixel-ratio: 2), (min-resolution:  192dpi) {/*  Put  High  DPI  Styles  Here  */} 
 @media screen (-webkit-min-device-pixel-ratio: 2), (min-resolution:  192dpi), and (min-width:  105em) {}
 ```
-### 5.4.1.The universal max-width rule for images  
+### 5.4.1. The universal max-width rule for images  
 ```
 img {
     max-width: 100%;
 }
 ```
 
-### 5.4.2.Using srcset 
+### 5.4.2. Using srcset 
 Не респонсивный вариант, при изменении ширины экрана загружает картинки только при увеличении разрешения, при уменьшении ничего не происходит, грузит первую большую картинку и дальше резайзит ее. 
 
 ```
@@ -185,7 +185,7 @@ img {
      srcset="img/amp-small.jpg 512w, img/amp-medium.jpg 768w, img/amp-large.jpg 1280w"
      sizes="(min-width:  704px) 50vw,  (min-width:  480px) 75vw, 100vw">
 ```
-### 5.4.3.Using the `<picture>` element  
+### 5.4.3. Using the `<picture>` element  
 
 Для больших экранов браузер сам выберет какую картинку ему подтянуть, для маленьких кранов он будет выбирать картинку в соответствии с DPI (1x или 2x): 
 ```
@@ -209,7 +209,7 @@ img {
 </picture>
 ```
 	
-### 5.4.4.Polyfilling support with Picturefill
+### 5.4.4. Polyfilling support with Picturefill
 Не забыть добавить элемент `<picture>` для браузеров, которые его не поддерживают, а затем подключить полифилл
 
 ```
