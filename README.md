@@ -220,9 +220,29 @@ img {
 
 # Глава 6 (Going further with images)
 
-### 6.1.  Using  image  sprites 
-
+### 6.1. Using  image  sprites 
 Использовать спрайты по HTTP/1 - хорошо, по HTTP/2 - плохо
+
+### 6.1. Reducing  raster  images  with  imagemin 
+
+TODO @me
+- [ ] Попробовать вместо `picture` использовать `img` ниже
+ 
+```
+<img id="heroImage" src="img/hero-1x.jpg" alt="Grilled Pork Chops" srcset="img/hero-2x.jpg 2x, img/hero-1x.jpg 1x">
+```
+
+Есть сборка: установка пары npm-пакетов и запуск скрипта с помощью ноды, а так же вывод (с графиком!), о том, что пожатые картинки (на 59% jpg и на 35% png) грузятся в 2 раза быстрее.
+
+### 6.2.2. Optimizing SVG images
+```
+npm i -g svgo
+svgo -o logo-opt.svg logo.svg
+svgo -h 	- посмотреть опции оптимизации
+svgo -p 1 -o logo-opt-1.svg logo.svg  - больший процент сжатия, но надо следить чтобы изображение не попячилось (планые линии становятся угловатыми)
+
+```
+
 
 # Best Practices 
 ### 1. Использовать `rel="noopener"`
