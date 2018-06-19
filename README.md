@@ -84,7 +84,13 @@ inline-CSS (вставленый через `<style>`) позволяет заг
 
 ### 2.4.1. Understanding how browsers render web pages 
 
-![](/images/page-rendering.png)
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td width="600px">
+      <img src="./images/page-rendering.png" alt="comparisonPNG_WebP_DPI" width="100%">
+    </td>
+  </tr>
+</table>
 
 Этапы рендеринга страницы:  
 1. `HTML` загружается с сервера и парсится браузером для построения `DOM`.  
@@ -141,7 +147,13 @@ console.timeStamp('Modal open');
 
 Скорость суммы процессов рендеринга и отрисовки в зависимости от выбора css-селектора:  
 
-![](/images/css-selectors.png)
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td width="500px">
+      <img src="./images/css-selectors.png" alt="comparisonPNG_WebP_DPI" width="100%">
+    </td>
+  </tr>
+</table>
 
 
 ## Глава 4 (Understanding critical CSS)
@@ -248,13 +260,30 @@ npm  i  imagemin  imagemin-webp
 ```
 Сравнение в скорости загрузки для неоптимизированных **JPG**, оптимизированных **JPG** и **WebP** для различных DPI:  
 
-![](/images/comparisonJPG_WebP_DPI.png)
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td width="500px">
+      <img src="./images/comparisonJPG_WebP_DPI.png" alt="comparisonPNG_WebP_DPI" width="100%">
+    </td>
+  </tr>
+</table>
 
-Сравнение в скорости загрузки для неоптимизированных **PNG**, оптимизированных без потерь **PNG** и **WebP** для различных DPI:  
+Сравнение в скорости загрузки для неоптимизированных **PNG**, оптимизированных без потерь **PNG** и **WebP** для различных DPI: 
 
-![](/images/comparisonPNG_WebP_DPI.png)
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td width="500px">
+      <img src="./images/comparisonPNG_WebP_DPI.png" alt="comparisonPNG_WebP_DPI" width="100%">
+    </td>
+  </tr>
+</table>
 
 + WebP сжимается лучше, чем jpg и png форматы
+
+
+
+# Глава 7 (Faster fonts)
+
 
 # Best Practices 
 ### 1. Использовать `rel="noopener"`
