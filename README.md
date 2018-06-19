@@ -240,9 +240,21 @@ npm i -g svgo
 svgo -o logo-opt.svg logo.svg
 svgo -h 	- посмотреть опции оптимизации
 svgo -p 1 -o logo-opt-1.svg logo.svg  - больший процент сжатия, но надо следить чтобы изображение не попячилось (планые линии становятся угловатыми)
-
 ```
 
+### 6.2.2. Encoding  lossy  WebP  images  with  imagemin
+```
+npm  i  imagemin  imagemin-webp
+```
+Сравнение в скорости загрузки для неоптимизированных **JPG**, оптимизированных **JPG** и **WebP** для различных DPI:  
+
+![](/images/comparisonJPG_WebP_DPI.png)
+
+Сравнение в скорости загрузки для неоптимизированных **PNG**, оптимизированных без потерь **PNG** и **WebP** для различных DPI:  
+
+![](/images/comparisonPNG_WebP_DPI.png)
+
++ WebP сжимается лучше, чем jpg и png форматы
 
 # Best Practices 
 ### 1. Использовать `rel="noopener"`
