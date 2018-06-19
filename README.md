@@ -254,9 +254,9 @@ svgo -h 	- посмотреть опции оптимизации
 svgo -p 1 -o logo-opt-1.svg logo.svg  - больший процент сжатия, но надо следить чтобы изображение не попячилось (планые линии становятся угловатыми)
 ```
 
-### 6.2.2. Encoding  lossy  WebP  images  with  imagemin
+### 6.2.2. Encoding lossy WebP images with imagemin
 ```
-npm  i  imagemin  imagemin-webp
+npm i imagemin imagemin-webp
 ```
 Сравнение в скорости загрузки для неоптимизированных **JPG**, оптимизированных **JPG** и **WebP** для различных DPI:  
 
@@ -283,6 +283,53 @@ npm  i  imagemin  imagemin-webp
 
 
 # Глава 7 (Faster fonts)
+### 7.1.2. Rolling your own @font-face cascade 
+
+**Converting fonts**
+
+| Font format | Extension | Browser support |
+| ------------|:---------:|-----------------|
+|TrueType     |ttf        | Все, кроме IE8- |
+|OpenType     |eot        | IE6+ 	    |
+|WOFF 	      |woff       | Все, кроме Android Browser 4.3-  и IE8-|
+|WOFF2        |woff2      | Все современные, кроме IE и плохо в Safari|
+
+Плагины для конвертации:
+```
+npm install -g ttf2eot ttf2woff ttf2woff2
+
+ttf2eot OpenSans-Light.ttf OpenSans-Light.eot
+ttf2woff OpenSans-Light.ttf OpenSans-Light.woff
+cat OpenSans-Light.ttf | ttf2woff2 >> OpenSans-Light.woff2
+```
+
+**Building the @font-face cascade**
+
+Пишем правила для каждого веса шрифта (`font-weight`) и стиля (`font-style`) начиная с самого легкого, пример одного правила:
+```
+@font-face {
+	font-family: "Open Sans Light";
+	font-weight: 300;
+	font-style: normal;
+	src: local("Open Sans Extra Light"),
+	     local("OpenSans-Light"),
+	     url("open-sans/OpenSans-Light.woff2") format("woff2"),
+	     url("open-sans/OpenSans-Light.woff") format("woff"),
+	     url("open-sans/OpenSans-Light.eot") format("embedded-opentype"),
+	     url("open-sans/OpenSans-Light.ttf") format("truetype");
+}
+```
+
+* `local("Open Sans Extra Light"),local("OpenSans-Light"),` - ищет шрифты в системе, прежде чем качать их, для тестирования надо комментировать эти строки, иначе он подтянет шрифты из системы и не будет видна возможна загрузка . 
+* `url(...` - дальше браузер проходит по списку подключенных шрифтов сверху вниз и подключает доступный шрифт, список надо начинать надо с наиболее приоритетного . 
+
+Использование выше описанного шрифта:
+```
+font-family: "Open Sans Light", Helvetica, Arial, sans-serif;
+font-weight: 300; // - использовать тот же, что есть в описании @font-face
+```
+
+### 7.2. Compressing EOT and TTF font formats
 
 
 # Best Practices 
