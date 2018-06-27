@@ -330,6 +330,12 @@ font-weight: 300; // - использовать тот же, что есть в 
 ```
 
 ### 7.2. Compressing EOT and TTF font formats
+Форматы `WOFF2` и `WOFF` внутренне сжаты, `TTF` и `EOT` - не сжаты, но сжатие возможно настроить на стороне сервера 
+
+TODO @me
+- [ ] Узнать про сжатие шрифтов на сервере у нас
+
+### 7.3. Subsetting fonts
 
 
 # Best Practices 
