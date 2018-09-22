@@ -337,6 +337,12 @@ TODO @me
 
 ### 7.3. Subsetting fonts
 
+Надо скачивать только те алфавиты в шрифтах, которые используются, ресурсы типа **Google Fonts** и **Adobe Typekit** позволяют это сделать, можно для этого использовать библиотечку для выделения только нужного диапозона Unicode-символов, пример:
+
+```
+pyftsubset  OpenSans-Regular.ttf --unicodes=U+0000-007F  --output-file=OpenSans-Regular-BasicLatin.ttf --name-IDs='*'
+```
+### 7.4.  Optimizing  the  loading  of  fonts
 
 # Best Practices 
 ### 1. Использовать `rel="noopener"`
