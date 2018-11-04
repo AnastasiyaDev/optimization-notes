@@ -373,10 +373,44 @@ pyftsubset  OpenSans-Regular.ttf --unicodes=U+0000-007F  --output-file=OpenSans-
 Устанавливает очень короткий период блокировки (100 мс или меньше) и период замены в 0 секунды.
 Похоже на ‘fallback’, но по истечению 3-х секунд, браузер может или прервать загрузку (при медленном интернете) или понизить приоритет загрузки. Когда браузер загрузит шрифт, он все равно продолжит отображать текст запасным шрифтом, но если вы обновите текущую или перейдете на другую страницу, для которой установлено значение ‘optional’ и используется тот-же шрифт, то браузер отрисует текст загруженным шрифтом.
 
-советуют ставить по умолчанию `font-display: swap`.
+Советуют ставить по умолчанию `font-display: swap`.
 
 ### 7.4.3 Using the font-loading API 
+Если используются сторонние поставщики шрифтов на ваш сайт, то у вас нет возможности контроливать cssи следовательно сделать так, как описано выше, но можно это сделать с помощью **font-loading API** через js.
 
+В чем суть этого подхода:
+1. В файле со стилями, после объявления шрифтов, надо указать семейство шрифтов для конкретного селектора в области класса `
+.fonts-loaded`
+```
+.fonts-loaded body{
+	font-family: "Open Sans Regular";
+}
+```
+2. В `<head>` после тега `<link>`, который импортирует `styles.css` (который импортирует наши шрифты), вставить `<script>` с содержанием
+```
+		<script>
+			(function(document){
+				if(document.fonts && document.cookie.indexOf("fonts-loaded") === -1){
+					document.fonts.load("1em Open Sans Light");
+					document.fonts.load("1em Open Sans Regular");
+					document.fonts.load("1em Open Sans Bold");
+					document.fonts.ready.then(function(fontFaceSet){
+						document.documentElement.className += " fonts-loaded";
+						document.cookie = "fonts-loaded=";
+					});
+				}
+				else{
+					document.documentElement.className += " fonts-loaded";
+				}
+			})(document);
+		</script>
+```
+
+Один из недостатков этого метода заключается в том, что он вызывает перерисовку текстовых элементов на странице, но повышенная доступность стоит того, чтобы его использовать. - пишут в книге
+Я вижу кучу лишнего кода, по сравнению с 1й строчкой в css, тем более, что поддержка сейчас у `font-display` хорошая и не видела не разу чтобы такой метод использовался. Ктоме того нет поддержки в IE и Edge, но в книге на этот случай описан полифилл **Font  Face  Observer **.
+
+
+# Глава 8 (Keeping JavaScript lean and fast)
 
 
 # Best Practices 
