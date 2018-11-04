@@ -2,7 +2,7 @@
 
 ## Глава 1 (Understanding web performance)
 
-### 1.1.2. How web browsers talk to web servers 
+### 1.1.2 How web browsers talk to web servers 
 
 Первое что нужно сделать, чтобы повысить производительность сайта, это снизить задержки (`latency`) при общении с сервером.  
 
@@ -17,20 +17,20 @@
 
 При улучшении производительности веб-сайта цель проста: уменьшить объем переданных данных (эта простая концепция работает как для `HTTP/1`, так и для `HTTP/2`). Надо начать с минимизации ресурсов сайта, включая CSS, JavaScript и HTML-код, картинки  
 
-### 1.4.1. Minifying assets 
+### 1.4.1 Minifying assets 
 
 `npm i -g minifier html-minify` - пакеты для минификации ресурсов  
 `minify -o ./css/styles.min.css ./css/styles.css` - минификация css  
 `minify -o jquery.min.js jquery.js` - минификация js  
 `htmlminify -o index.html index.src.html` - минификация html  
 
-### 1.4.2. Using server compression
+### 1.4.2 Using server compression
 
 Сжатие на сервере работает следующим образом: пользователь запрашивает веб-страницу с сервера, запрос пользователя сопровождается `Accept-Encodingheader`, который сообщает серверу форматы сжатия, которые браузер может использовать. Метод сжатия, называемый `gzip` имеет почти универсальную поддержку браузеров, и очень эффективен в уменьшении размера текстовых ресурсов.  
 
 Проделала практику из книги, сразу заметно уменьшение веса `css(16KB -> 3.1KB)` и `js(84.4KB -> 30KB, 2KB -> 1.1KB)` файлов.
 
-### 1.4.3. Optimizing images 
+### 1.4.3 Optimizing images 
 
 Пробовала ресурс [tinypng.com](http://tinypng.com) - жмет хорошо, потери качетва на jpg практически незаметны, на png-шках области с тенями/полупрозрачные видно как шакалятся, для примера собрала несколько изображений в папку [/optimazeImage](https://github.com/AnastasiyaDev/optimization-notes/tree/master/images/optimazeImage)  
 
@@ -53,7 +53,7 @@
 	</tr>
 </table>
 
-### 1.6. Summary
+### 1.6 Summary
 
 * Анализ веса страницы с помощью `Developer Tools` в Google Chrome
 * Минификация текстовых ресурсов, которая удаляет ненужные пробелы из файлов, не затрагивая их функции
@@ -69,7 +69,7 @@ inline-CSS (вставленый через `<style>`) позволяет заг
 
 `Google Analytic`  
 
-### 2.3.1. Viewing timing information  
+### 2.3.1 Viewing timing information  
 
 Можно почитать об это в [документации от гугл](https://developers.google.com/web/tools/chrome-devtools/network-performance/reference#timing-explanation)  
 
@@ -78,11 +78,11 @@ inline-CSS (вставленый через `<style>`) позволяет заг
 
 `Developer Tools` - чтобы устранинить задержку браузер создает `DNS lookup cache`  
 
-### 2.3.2. Viewing HTTP request and response headers
+### 2.3.2 Viewing HTTP request and response headers
 
 `Content-Encoding` - в этом заголовке указывается, сжат ли ресурс веб-сервером.  
 
-### 2.4.1. Understanding how browsers render web pages 
+### 2.4.1 Understanding how browsers render web pages 
 
 <table cellpadding="0" cellspacing="0" width="100%">
   <tr>
@@ -100,7 +100,7 @@ inline-CSS (вставленый через `<style>`) позволяет заг
 
 Изменения на страницы приводят к повторному рендерингу.  
 
-### 2.4.2. Using Google Chrome’s Timeline tool (Performance)
+### 2.4.2 Using Google Chrome’s Timeline tool (Performance)
 
 Инструмент фиксирует четыре конкретных типа событий, каждый из которых имеет цветную кодировку:
 
@@ -118,16 +118,16 @@ inline-CSS (вставленый через `<style>`) позволяет заг
 4. Раздел **Main** -  Каждый бар представляет собой событие. Более широкий бар означает, что событие заняло больше времени. Ось-y представляет стек вызовов. Когда вы видите события, укладываются друг на друга. При выборе события на шкале времени, если у него есть красный треугольник в верхнем левом углу, то это плохо. Клик на событие -> внизу в `Summary` -> `reveal` -> 
 событие, инициировавшее текущие событие -> `Details` (ссылка на строку кода)
 
-### 2.4.3. Identifying problem events: thy enemy is jank
+### 2.4.3 Identifying problem events: thy enemy is jank
 **Jank-эффект** - взаимодействия и анимации, которые подтормаживают или не выглядят плавно. Причина слишком много процессорного времени потребляется в течение одного кадра (фрейма). [Игра](http://jakearchibald.github.io/jank-invaders)
 
-### 2.4.4. Marking points in the timeline with JavaScript
+### 2.4.4 Marking points in the timeline with JavaScript
 Можно поставить через JS сво метку, которая по событию появиться на таймлайне в панеле Network. 
 
 ```
 console.timeStamp('Modal open');
 ```
-### 2.5. Benchmarking JavaScript in Chrome
+### 2.5 Benchmarking JavaScript in Chrome
 ```
 1.console.time("jQuery"); jQuery("#schedule"); console.timeEnd("jQuery");  - 0.323ms
 2.console.time("querySelector"); document.querySelector("#schedule"); console .timeEnd("querySelector"); - 0.069ms
@@ -159,7 +159,7 @@ console.timeStamp('Modal open');
 ## Глава 4 (Understanding critical CSS)
 `<style>` в `<head>` и в нем все стили касающиеся первого видимого окна, они не кешируются, зато быстро отрисовываются, сокращается время до **First Paint** (см. пункт Инструменты, Прогрессивные веб-метрики)
 
-### 4.2.2. Loading below-the-fold styles 
+### 4.2.2 Loading below-the-fold styles 
 
 Использование нового стандарта `<link rel="preload">` - [статья на русском](http://prgssr.ru/development/dlya-chego-stoit-ispolzovat-predzagruzku.html), [браузерная поддержка](https://caniuse.com/#search=preload)
 
@@ -167,22 +167,22 @@ console.timeStamp('Modal open');
 ## Глава 5 (Making images responsive)
 Время отрисовки на четверть меньше для не масштабируемых избражений (т.е. не грузить картинки шириной больше, чем размер экрана устройства), а время рендеринга ~на восьмую часть
 
-### 5.2.3. Knowing what image formats to use 
+### 5.2.3 Knowing what image formats to use 
 Есть формат WebP от гугла, релиз 2010 года, формат интересный и полезный для более эффетивного сжатия для избражений с прозрачностью, но [поддержка](https://caniuse.com/#feat=webp) плоха до сих пор. [Онлайн-конвектор](https://pastebin.com/QNKmkfKz)
 
-### 5.3.2. Targeting high DPI displays with media queries 
+### 5.3.2 Targeting high DPI displays with media queries 
 ```
 @media screen (-webkit-min-device-pixel-ratio: 2), (min-resolution:  192dpi) {/*  Put  High  DPI  Styles  Here  */} 
 @media screen (-webkit-min-device-pixel-ratio: 2), (min-resolution:  192dpi), and (min-width:  105em) {}
 ```
-### 5.4.1. The universal max-width rule for images  
+### 5.4.1 The universal max-width rule for images  
 ```
 img {
     max-width: 100%;
 }
 ```
 
-### 5.4.2. Using srcset 
+### 5.4.2 Using srcset 
 Не респонсивный вариант, при изменении ширины экрана загружает картинки только при увеличении разрешения, при уменьшении ничего не происходит, грузит первую большую картинку и дальше резайзит ее. 
 
 ```
@@ -197,7 +197,7 @@ img {
      srcset="img/amp-small.jpg 512w, img/amp-medium.jpg 768w, img/amp-large.jpg 1280w"
      sizes="(min-width:  704px) 50vw,  (min-width:  480px) 75vw, 100vw">
 ```
-### 5.4.3. Using the `<picture>` element  
+### 5.4.3 Using the `<picture>` element  
 
 Для больших экранов браузер сам выберет какую картинку ему подтянуть, для маленьких кранов он будет выбирать картинку в соответствии с DPI (1x или 2x): 
 ```
@@ -221,7 +221,7 @@ img {
 </picture>
 ```
 	
-### 5.4.4. Polyfilling support with Picturefill
+### 5.4.4 Polyfilling support with Picturefill
 Не забыть добавить элемент `<picture>` для браузеров, которые его не поддерживают, а затем подключить полифилл
 
 ```
@@ -232,10 +232,10 @@ img {
 
 # Глава 6 (Going further with images)
 
-### 6.1. Using  image  sprites 
+### 6.1 Using  image  sprites 
 Использовать спрайты по HTTP/1 - хорошо, по HTTP/2 - плохо
 
-### 6.1. Reducing  raster  images  with  imagemin 
+### 6.1 Reducing  raster  images  with  imagemin 
 
 TODO @me
 - [ ] Попробовать вместо `picture` использовать `img` ниже
@@ -246,7 +246,7 @@ TODO @me
 
 Есть сборка: установка пары npm-пакетов и запуск скрипта с помощью ноды, а так же вывод (с графиком!), о том, что пожатые картинки (на 59% jpg и на 35% png) грузятся в 2 раза быстрее.
 
-### 6.2.2. Optimizing SVG images
+### 6.2.2 Optimizing SVG images
 ```
 npm i -g svgo
 svgo -o logo-opt.svg logo.svg
@@ -254,7 +254,7 @@ svgo -h 	- посмотреть опции оптимизации
 svgo -p 1 -o logo-opt-1.svg logo.svg  - больший процент сжатия, но надо следить чтобы изображение не попячилось (планые линии становятся угловатыми)
 ```
 
-### 6.2.2. Encoding lossy WebP images with imagemin
+### 6.2.2 Encoding lossy WebP images with imagemin
 ```
 npm i imagemin imagemin-webp
 ```
@@ -283,7 +283,7 @@ npm i imagemin imagemin-webp
 
 
 # Глава 7 (Faster fonts)
-### 7.1.2. Rolling your own @font-face cascade 
+### 7.1.2 Rolling your own @font-face cascade 
 
 **Converting fonts**
 
@@ -329,13 +329,13 @@ font-family: "Open Sans Light", Helvetica, Arial, sans-serif;
 font-weight: 300; // - использовать тот же, что есть в описании @font-face
 ```
 
-### 7.2. Compressing EOT and TTF font formats
+### 7.2 Compressing EOT and TTF font formats
 Форматы `WOFF2` и `WOFF` внутренне сжаты, `TTF` и `EOT` - не сжаты, но сжатие возможно настроить на стороне сервера 
 
 TODO @me
 - [ ] Узнать про сжатие шрифтов на сервере у нас
 
-### 7.3. Subsetting fonts
+### 7.3 Subsetting fonts
 
 Надо скачивать только те алфавиты в шрифтах, которые используются, ресурсы типа **Google Fonts** и **Adobe Typekit** позволяют это сделать, можно для этого использовать библиотечку для выделения только нужного диапозона Unicode-символов, пример:
 
@@ -343,7 +343,7 @@ TODO @me
 pyftsubset  OpenSans-Regular.ttf --unicodes=U+0000-007F  --output-file=OpenSans-Regular-BasicLatin.ttf --name-IDs='*'
 ```
 
-### 7.4.1. Understanding font-loading problems 
+### 7.4.1 Understanding font-loading problems 
 * **FOIT (Flash of Invisible Text)** — «мелькание невидимого текста», когда во время загрузки веб-шрифта текст не отображается, изначально загружается невидемый щрифт;
 * **FOUT (Flash of Unstyled Text)** — «мелькание неоформленного текста», когда во время загрузки веб-шрифта текст отображается шрифтом по умолчанию (напр. системным);
 
@@ -428,7 +428,7 @@ pyftsubset  OpenSans-Regular.ttf --unicodes=U+0000-007F  --output-file=OpenSans-
 * ***CommonJS*** – система модулей, встроенная в сервер Node.JS. Требует поддержки на клиентской и серверной стороне.
 * ***UMD*** – система модулей, которая предложена в качестве универсальной. UMD-модули будут работать и в системе AMD и в CommonJS.
 
-### 8.2. Using leaner jQuery-compatible alternatives
+### 8.2 Using leaner jQuery-compatible alternatives
 
 
 
