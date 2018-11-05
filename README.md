@@ -448,9 +448,29 @@ pyftsubset  OpenSans-Regular.ttf --unicodes=U+0000-007F  --output-file=OpenSans-
 Благодаря стандортизации javascript его можно использовать нативно, без библиотек-надстроек. В разделе идут примеры использования чистого js.
 
 ### 8.3.5 Making AJAX requests with the Fetch API
-Раньше в js использовался объект XMLHttpRequestrequest. Это был громоздкий способ делать запросы AJAX, а разные браузеры требовали разных подходов. jQuery реализовал AJAX - обертку над объектов XMLHttpRequest, которая гараздо удобнее в использовании. Но некоторые браузеры реализовали собственный API-интерфейс, который называется Fetch API.
+Раньше в js использовался объект `XMLHttpRequestrequest`. Это был громоздкий способ делать запросы AJAX, а разные браузеры требовали разных подходов. jQuery реализовал AJAX - обертку над объектов XMLHttpRequest, которая гараздо удобнее в использовании. Но некоторые браузеры реализовали собственный API-интерфейс, который называется Fetch API.
 
 ### 8.3.6 Using the Fetch API
+Наиболее часто используют `fetch` для GET-запросов 
+
+```
+fetch("https://api.moviemaniac.com/movies/the-burbs")
+    .then(function(response){
+        return response.json();
+    }).then(function(data){
+        console.log(data);
+    });
+```
+
+Так эе возможно использование POST-запросов и передача параметров в `fetch`.
+
+### 8.3.7 Polyfilling the Fetch API
+Ну конечно не все браузеры это поддерживают(EI) и в этом разделе описываются варианты как это завести в таких вот браузерах. 
+
+### 8.4 Animating with requestAnimationFrame
+
+
+
 
 
 
