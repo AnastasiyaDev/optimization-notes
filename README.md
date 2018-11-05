@@ -1,9 +1,9 @@
 # Заметки по книге [Web Performance in Action](https://www.dropbox.com/s/rjt175gbuhc705x/Wagner%20J.%20-%20Web%20Performance%20in%20Action.%20Building%20Faster%20Web%20Pages%20-%202016.PDF?dl=0) и не только
 
+
 ## Глава 1 (Understanding web performance)
 
 ### 1.1.2 How web browsers talk to web servers 
-
 Первое что нужно сделать, чтобы повысить производительность сайта, это снизить задержки (`latency`) при общении с сервером.  
 
 При использовании протокола `HTTP/1` возникает феномен, называемый Блокировка начала строки (`head-of-line blocking`). 
@@ -14,24 +14,20 @@
 Вес страницы для устройств с ретиной больше чем на устройствах со стандартной плотностью отображения.  
 
 ### 1.4 Optimizing the client’s website
-
 При улучшении производительности веб-сайта цель проста: уменьшить объем переданных данных (эта простая концепция работает как для `HTTP/1`, так и для `HTTP/2`). Надо начать с минимизации ресурсов сайта, включая CSS, JavaScript и HTML-код, картинки  
 
 ### 1.4.1 Minifying assets 
-
 `npm i -g minifier html-minify` - пакеты для минификации ресурсов  
 `minify -o ./css/styles.min.css ./css/styles.css` - минификация css  
 `minify -o jquery.min.js jquery.js` - минификация js  
 `htmlminify -o index.html index.src.html` - минификация html  
 
 ### 1.4.2 Using server compression
-
 Сжатие на сервере работает следующим образом: пользователь запрашивает веб-страницу с сервера, запрос пользователя сопровождается `Accept-Encodingheader`, который сообщает серверу форматы сжатия, которые браузер может использовать. Метод сжатия, называемый `gzip` имеет почти универсальную поддержку браузеров, и очень эффективен в уменьшении размера текстовых ресурсов.  
 
 Проделала практику из книги, сразу заметно уменьшение веса `css(16KB -> 3.1KB)` и `js(84.4KB -> 30KB, 2KB -> 1.1KB)` файлов.
 
 ### 1.4.3 Optimizing images 
-
 Пробовала ресурс [tinypng.com](http://tinypng.com) - жмет хорошо, потери качетва на jpg практически незаметны, на png-шках области с тенями/полупрозрачные видно как шакалятся, для примера собрала несколько изображений в папку [/optimazeImage](https://github.com/AnastasiyaDev/optimization-notes/tree/master/images/optimazeImage)  
 
 Слева направо: оригинальная картинка, оптимизация с помощью `ImageOptim`, оптимизация с помощью `tinypng.com`  
@@ -54,7 +50,6 @@
 </table>
 
 ### 1.6 Summary
-
 * Анализ веса страницы с помощью `Developer Tools` в Google Chrome
 * Минификация текстовых ресурсов, которая удаляет ненужные пробелы из файлов, не затрагивая их функции
 * Дальнейшее сокращение размера этих текстовых ресурсов с помощью сжатия на стороне сервера
@@ -63,14 +58,13 @@
 Наибольший прирост к скорости загрузки был после оптимизации изображений - **30%** на тестовой странице, против **10%** у сжатия css, js и **14%** после использования сжатия на сервере
 
 
-## Глава 2 (Using assessment tools)
 
+## Глава 2 (Using assessment tools)
 inline-CSS (вставленый через `<style>`) позволяет загружать стили одновременно с HTML, сокращает HTTP-запросы, что хорошо для серверов с `HTTP/1`, увеличивает скорость рендеринга документа, но не кэшируется  
 
 `Google Analytic`  
 
 ### 2.3.1 Viewing timing information  
-
 Можно почитать об это в [документации от гугл](https://developers.google.com/web/tools/chrome-devtools/network-performance/reference#timing-explanation)  
 
 `Time to First Byte(TTFB)` - количество времени между моментом, когда пользователь запрашивает веб-страницу и 
@@ -79,11 +73,9 @@ inline-CSS (вставленый через `<style>`) позволяет заг
 `Developer Tools` - чтобы устранинить задержку браузер создает `DNS lookup cache`  
 
 ### 2.3.2 Viewing HTTP request and response headers
-
 `Content-Encoding` - в этом заголовке указывается, сжат ли ресурс веб-сервером.  
 
 ### 2.4.1 Understanding how browsers render web pages 
-
 <table cellpadding="0" cellspacing="0" width="100%">
   <tr>
     <td width="600px">
@@ -101,7 +93,6 @@ inline-CSS (вставленый через `<style>`) позволяет заг
 Изменения на страницы приводят к повторному рендерингу.  
 
 ### 2.4.2 Using Google Chrome’s Timeline tool (Performance)
-
 Инструмент фиксирует четыре конкретных типа событий, каждый из которых имеет цветную кодировку:
 
 * Loading (Blue)—Network-related events such as HTTP requests. It also includes activity such as the parsing of HTML, CSS, and image decoding.  
@@ -135,7 +126,6 @@ console.timeStamp('Modal open');
 
 
 ## Глава 3 (Optimizing CSS)
-
 * DRY (don’t repeat yourself).  
 * Писать сокращенными правилами (`padding, margin, font`)  
 * Не усложнять селекторы, чем вложенность меньше, тем лучше, в идеале < 3.  
@@ -160,8 +150,8 @@ console.timeStamp('Modal open');
 `<style>` в `<head>` и в нем все стили касающиеся первого видимого окна, они не кешируются, зато быстро отрисовываются, сокращается время до **First Paint** (см. пункт Инструменты, Прогрессивные веб-метрики)
 
 ### 4.2.2 Loading below-the-fold styles 
-
 Использование нового стандарта `<link rel="preload">` - [статья на русском](http://prgssr.ru/development/dlya-chego-stoit-ispolzovat-predzagruzku.html), [браузерная поддержка](https://caniuse.com/#search=preload)
+
 
 
 ## Глава 5 (Making images responsive)
@@ -198,7 +188,6 @@ img {
      sizes="(min-width:  704px) 50vw,  (min-width:  480px) 75vw, 100vw">
 ```
 ### 5.4.3 Using the `<picture>` element  
-
 Для больших экранов браузер сам выберет какую картинку ему подтянуть, для маленьких кранов он будет выбирать картинку в соответствии с DPI (1x или 2x): 
 ```
 <picture>
@@ -236,7 +225,6 @@ img {
 Использовать спрайты по HTTP/1 - хорошо, по HTTP/2 - плохо
 
 ### 6.1 Reducing  raster  images  with  imagemin 
-
 TODO @me
 - [ ] Попробовать вместо `picture` использовать `img` ниже
  
@@ -304,7 +292,6 @@ cat OpenSans-Light.ttf | ttf2woff2 >> OpenSans-Light.woff2
 ```
 
 **Building the @font-face cascade**
-
 Пишем правила для каждого веса шрифта (`font-weight`) и стиля (`font-style`) начиная с самого легкого, пример одного правила:
 ```
 @font-face {
@@ -336,7 +323,6 @@ TODO @me
 - [ ] Узнать про сжатие шрифтов на сервере у нас
 
 ### 7.3 Subsetting fonts
-
 Надо скачивать только те алфавиты в шрифтах, которые используются, ресурсы типа **Google Fonts** и **Adobe Typekit** позволяют это сделать, можно для этого использовать библиотечку для выделения только нужного диапозона Unicode-символов, пример:
 
 ```
@@ -353,7 +339,6 @@ pyftsubset  OpenSans-Regular.ttf --unicodes=U+0000-007F  --output-file=OpenSans-
 * В Safari нет времени ожидания.
 
 ### 7.4.2 Using the CSS font-display property
-
 Свойство [font-display](https://caniuse.com/#search=font-display) определяет как шрифт отобразится, в зависимости от того, когда шрифт загрузят. Нужно добавить вконец объявления `@font-face{}`. Имеет значения:
 * `auto`
 Использует поведение браузера по умолчанию. Обычно это поведение ‘block’.
@@ -410,6 +395,7 @@ pyftsubset  OpenSans-Regular.ttf --unicodes=U+0000-007F  --output-file=OpenSans-
 Я вижу кучу лишнего кода, по сравнению с 1й строчкой в css, тем более, что поддержка сейчас у `font-display` хорошая и не видела не разу чтобы такой метод использовался. Ктоме того нет поддержки в IE и Edge, но в книге на этот случай описан полифилл **Font  Face  Observer **.
 
 
+
 # Глава 8 (Keeping JavaScript lean and fast)
 ### 8.1.1 Placing  the  `<script>`  element  properly
 Браузеры читают HTML-документы сверху вниз. Когда ссылки на внешние ресурсы найдены, браузер перестает парсить html, а загружает и анализирует ресурсы, рендеринг блокируется. Поэтому надо грузить скрипты внизу страницы, иначе отрисовка будет отложенной.
@@ -429,7 +415,6 @@ pyftsubset  OpenSans-Regular.ttf --unicodes=U+0000-007F  --output-file=OpenSans-
 * ***UMD*** – система модулей, которая предложена в качестве универсальной. UMD-модули будут работать и в системе AMD и в CommonJS.
 
 ### 8.2 Using leaner jQuery-compatible alternatives
-
 Вряд ли это актуально для нас, на мадженто2 используется jquery и куча виджетов основоных на ней. Сам файл **jquery.min.js** на М2 весит **94.9 KB**.
 
 Тем не менее, альтернативы предложенные в книге (у все вес меньше 10KB):
@@ -441,7 +426,6 @@ pyftsubset  OpenSans-Regular.ttf --unicodes=U+0000-007F  --output-file=OpenSans-
 * [Sprint](https://github.com/bendc/sprint)
 
 ### 8.2.4 Comparing performance
-
 Библиотека [бенчмарков для js-кода](https://benchmarkjs.com) - можно сравнивать по произвобительности куски кода. **Sprint** по этим данным из 4х библиотек справился быстрее всех по выбору элемента по классу, тогглу класса, тогглу атрибута, быстрее jquery раза в 3.
 
 ### 8.3 Getting by without jQuery 
@@ -468,10 +452,14 @@ fetch("https://api.moviemaniac.com/movies/the-burbs")
 Ну конечно не все браузеры это поддерживают(EI) и в этом разделе описываются варианты как это завести в таких вот браузерах. 
 
 ### 8.4 Animating with requestAnimationFrame
+Раньше для анимации через js использовались `setTimeout` и `setInterval` - оно вроде ок, но не оптимально. Использование `requestAnimationFrame`([поддержка](https://caniuse.com/#search=requestAnimationFrame)) позволяет синхронизировать наши анимации со встроенными механизмами обновления страницы - [статья на learn.javascript](https://learn.javascript.ru/js-animation#requestanimationframe). В плане производительности `requestAnimationFrame` уступает только в процессе скриптинга, но в процессах рендеринга и отрисовки он работает быстрее, чем CCS `transition` и `setTimeout`. 
+
+Т.к. использование `requestAnimationFrame` очень громоздкое, авторы предлагают jQuery независимую библиотеку для анимации [Velocity.js](http://velocityjs.org), но если jQuery все же подключен в проект, то это библиотеку можно использовать вместе с ним (хотя зачем если тогда будет доступен точно такой же по синтаксису удобный метод `animate()`). 
 
 
 
-
+# Глава 9 (Boosting performance with service workers)
+### 9.1 What are service workers?
 
 
 
