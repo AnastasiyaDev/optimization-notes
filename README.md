@@ -430,8 +430,19 @@ pyftsubset  OpenSans-Regular.ttf --unicodes=U+0000-007F  --output-file=OpenSans-
 
 ### 8.2 Using leaner jQuery-compatible alternatives
 
+Вряд ли это актуально для нас, на мадженто2 используется jquery и куча виджетов основоных на ней. Сам файл **jquery.min.js** на М2 весит **94.9 KB**.
 
+Тем не менее, альтернативы предложенные в книге (у все вес меньше 10KB):
 
+* [Zepto](http://zeptojs.com) - самая функциональная, расщиряемая и популярная альтернатива jQuery.  
+
+* [Shoestring](https://github.com/filamentgroup/shoestring)  
+
+* [Sprint](https://github.com/bendc/sprint)
+
+### 8.2.4 Comparing performance
+
+Библиотека [бенчмарков для js-кода](https://benchmarkjs.com) - можно сравнивать по произвобительности куски кода. **Sprint** по этим данным из 4х библиотек справился быстрее всех по выбору элемента по классу, тогглу класса, тогглу атрибута, быстрее jquery раза в 3.
 
 # Best Practices 
 ### 1. Использовать `rel="noopener"`
