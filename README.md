@@ -471,7 +471,7 @@ Service worker осуществляют связь в качестве прок�
 <table cellpadding="0" cellspacing="0" width="100%">
   <tr>
     <td width="501px">
-      <img src="./images/service-workers-1.png" alt="comparisonPNG_WebP_DPI" width="100%">
+      <img src="./images/service-workers-1.PNG" alt="service worker" width="100%">
     </td>
   </tr>
 </table>
