@@ -490,6 +490,65 @@ if('serviceWorker'  in  navigator){
 
 *!не перезагружать страницу, пока не написана логика воркера*
 
+логика воркера для кэширования статических ресурсов в файле `/sw.js`
+```
+var cacheVersion = 'v1';
+
+var cachedAssets = [
+    '/css/global.css',
+    '/js/debounce.js',
+    '/js/nav.js',
+    '/js/attach-nav.js',
+    '/img/global/jeremy.svg',
+    '/img/global/icon-github.svg',
+    '/img/global/icon-email.svg',
+    '/img/global/icon-twitter.svg',
+    '/img/global/icon-linked-in.svg'
+];
+
+self.addEventListener('install', function (ev) {
+    ev.waitUntil(caches.open(cacheVersion) // открывает новый объект cache по ID - cacheVersion
+        .then(function (cache) {
+            return cache.addAll(cachedAssets);  // добавляет все указанные статические ресурсы (cachedAssets) в кэш
+        }).then(function () {
+            return self.skipWaiting(); // говорит Service Worker'ру немедленно запустить активацию после завершения установки
+        })
+    );
+});
+
+self.addEventListener('activate', function (ev) {
+    return self.clients.claim(); // позволяет Service Worker'ру немедленно начать работу
+})
+```
+### 9.2.3 Intercepting and caching network requests 
+
+Для работы страницы в оффлайне нужен по мимо статических ресурсов сам html и механизм, который перехватывает и управляет сетевыми запросами. Событие `fetch` позволяет использовать эту функцию. 
+
+Поведение события `fetch` Service Worker'ра: пользователь делает запрос на получение ресурса, и Service Worker перехватывает его, чтобы узнать, находится ли данный ресурса в кеше. Если нет, ресурса запрашивается через сеть и Service Worker кэширует его. Если он находится в кеше, он загружается из кеша.
+
+Написала код из книги, но он не сработал, на методе `clone()` ошибка - `Response body is already used`
+```
+self.addEventListener('fetch', function (ev) {
+    var allowedHosts = /(localhost|fonts\.googleapis\.com|fonts\.gstatic\.com)/i;
+    var deniedAssets = /(sw\.js|sw-install\.js)$/i;
+
+    if (allowedHosts.test(ev.request.url) && !deniedAssets.test(ev.request.url)) {
+        ev.respondWith(
+            caches.match(ev.request).then(function (cachedResponse) {
+                return cachedResponse ||
+                    fetch(ev.request).then(function (fetchedResponse) {
+                        caches.open(cacheVersion).then(function (cache) {
+                            cache.put(ev.request, fetchedResponse.clone());
+                        });
+
+                        return fetchedResponse;
+                    })
+            })
+        )
+    }
+})
+```
+
 # Best Practices 
 ### 1. Использовать `rel="noopener"`
 Если у ссылки есть `target="_blank"` то нужно прописать ей `rel="noopener"`, для этого есть пара причин, первое - безопасность, если это ссылка на внешний ресурс, то внешний ресурс будет иметь возможность доступа к `window.opener`, второе - 
