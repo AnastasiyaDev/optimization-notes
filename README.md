@@ -633,9 +633,46 @@ self.addEventListener('activate', function (ev) {
 
 
 # Глава 10 (Fine-tuning asset delivery) 
+### 10.1.1 Following compression guidelines  
+Настройки для локального сервера (файл в корне `http.js`)
+```
+var express = require("express"),
+	compression = require("compression"),
+	path = require("path"),
+	app = express(),
+	pubDir = "./htdocs";
 
+// Run static server
+app.use(compression({
+    level: 0
+}));
+app.use(express.static(path.join(__dirname, pubDir)));
+app.listen(8080);
 
+```
 
+`level`(подефолту - 6)- настройка уровня сжатия, в 9 лучше не ставить, ниже график зависимости уровней сжатия и **TTFB (Time To First Byte)** от времени загрузки.
+
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td width="500px">
+      <img src="./images/compression-level.png" alt="Compression level" width="100%">
+    </td>
+  </tr>
+</table>
+
+Что хорошо сжимать:
+* любые текстовые файлы
+* TTF и EOT, хотя они являются бинарными  
+
+Что нужно избегать сжимать - файлы, которые внутренне сжаты:
+* большенство типов картинок(кроме SVG)
+* шрифты - WOFF, WOFF2
+
+Сжатие внутренне сжатых типов файлов отрицательно сказывается на производительности - нагрузка на процессор, что приводит к снижению **TTFB** для этого ресурса.
+
+### 10.1.2 Using Brotli compression 
+Brotli-совместимые браузеры будут сжимать контент только через HTTPS-соединения.
 
 
 
