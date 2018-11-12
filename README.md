@@ -548,6 +548,22 @@ self.addEventListener('fetch', function (ev) {
     }
 })
 ```
+Воспользовалась [статьей с developers.google](https://developers.google.com/web/fundamentals/codelabs/offline/) и перепесала хендлер `fetch` на:
+```
+self.addEventListener('fetch', function(event) {
+    console.log(event.request.url);
+
+    event.respondWith(
+        caches.match(event.request).then(function(response) {
+            return response || fetch(event.request);
+        })
+    );
+});
+```
+
+### 9.2.4 Measuring the performance benefits 
+
+
 
 # Best Practices 
 ### 1. Использовать `rel="noopener"`
