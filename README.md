@@ -560,6 +560,7 @@ self.addEventListener('fetch', function(event) {
     );
 });
 ```
++ добавила в массив `cachedAssets` два элемента `'/', '/index.html'`
 
 ### 9.2.4 Measuring the performance benefits 
 
@@ -570,6 +571,74 @@ self.addEventListener('fetch', function(event) {
     </td>
   </tr>
 </table>
+
+### 9.2.5 Tweaking network request interception behavior
+Этом этапе написанный Service Worker всегда берет ресурсы из кэша, что не удобна для часто обновляемых ресурсов, в данном случае это html. Двухсторонний подход заключается в разветвлении обработки ресурсов исходя из условия (в данном случае по наличию в URL ресурса `.html`), одна часть ресурсов берется, как и раньше, из кэша, другая запрашивается по сети.
+
+```
+self.addEventListener('fetch', function(ev) {
+    var htmlDoc = /(\/|\.html)$/i;
+    var deniedAssets = /(sw\.js|sw-install\.js)$/i;
+
+    console.log(ev.request.url);
+
+    if (!deniedAssets.test(ev.request.url)) {
+        if (htmlDoc.test(ev.request.url)) {
+            ev.respondWith(
+                fetch(ev.request).then(function(response) {
+                    return response || fetch(ev.request);
+                }).catch(function () {
+                    return caches.match(ev.request);
+                })
+            );
+        } else {
+            ev.respondWith(
+                caches.match(ev.request).then(function(response) {
+                    return response || fetch(ev.request);
+                })
+            );
+        }
+    }
+});
+``` 
+Также можно кэшировать ресурсы с CDN в Service Worker, только нажо проверить чтобы на CDN-сервере был настроен заголовк `Access Control Allow Origin: *`.
+
+### 9.3.1 Versioning your files  
+До этого был написан Service Worker, который кэширует ресурсы сайта, такие как CSS, JavaScript и изображения, и всегда извлекает новую копию файлов HTML с сервера.
+
+### 9.3.2 Cleaning up old caches 
+
+```
+self.addEventListener('activate', function (ev) {
+    var cacheWhitelist = ['v2'];
+
+    ev.waitUntil(
+        caches.keys().then(function (keyList) {
+            return Promise.all([
+                keyList.map(function (key) {
+                    if(cacheWhitelist.indexOf(key) === -1) {
+                        return caches.delete(key);
+                    }
+
+                    return self.clients.claim(); // позволяет Service Worker'ру немедленно начать работу
+                })
+            ])
+        })
+    );
+});
+```
+
+[The  Offline  Cookbook](https://jakearchibald.com/2014/offline-cookbook) - это ресурс для шаблонов, которые можно использовать в своем Service Worker. Некоторые шаблоны ориентированы на производительность, некоторые предпочитают гибкость, поможет, если надо разобраться, с чего начать писать сервисного работника.
+
+
+
+# Глава 10 (Fine-tuning asset delivery) 
+
+
+
+
+
+
 
 
 
