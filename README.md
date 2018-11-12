@@ -548,7 +548,7 @@ self.addEventListener('fetch', function (ev) {
     }
 })
 ```
-Воспользовалась [статьей с developers.google](https://developers.google.com/web/fundamentals/codelabs/offline/) и перепесала хендлер `fetch` на:
+Воспользовалась [статьей с developers.google](https://developers.google.com/web/fundamentals/codelabs/offline/) и переписала хендлер `fetch` на:
 ```
 self.addEventListener('fetch', function(event) {
     console.log(event.request.url);
@@ -562,6 +562,14 @@ self.addEventListener('fetch', function(event) {
 ```
 
 ### 9.2.4 Measuring the performance benefits 
+
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td width="500px">
+      <img src="./images/service-workers-performance.png" alt="service worker performance" width="100%">
+    </td>
+  </tr>
+</table>
 
 
 
