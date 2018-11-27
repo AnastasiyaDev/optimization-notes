@@ -757,9 +757,24 @@ crossorgin="anonymous"
 Некоторые CDN предоставляют фрагменты кода, для которых уже настроена функция **Subresource Integrity**, но это еще не стандартная практика. Возможно, придется создавать собственные контрольные суммы, для этого можно воспользоваться генератором контрольной суммы на https://srihash.org.
 
 ### 10.4 Using resource hints 
+Ресурсные подсказки и директивы (**Resource Hints**) - ускоряют веб-сайты, оптимизируют доставку ресурсов, сокращают количество сетевых задержек, доставляют контент быстрее,— в то время, пока пользователь смотрит страницу.
+
+По мимо книги пользовалась [статьей](https://ymatuhin.ru/front-end/html5-link-prefetch/)
+ 
+***Dns-prefetch*** ([support](https://caniuse.com/#search=dns-prefetch))
+Помимо DNS устанавливает TCP, TLS связь. Помогает предгрузить соединение для веб сокетов. 
+```
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="//ajax.googleapis.com">
+```
 
 
-
+***Preconnect*** ([support](https://caniuse.com/#search=preconnect))
+Перед тем, как начать загружать сожержимое сайта http://example.com, браузеру нужно установить его IP адрес. И только после этого он сможет загрузить от туда содержимое. Конечно, на это потребуется какое-то время. Браузер преобразует имя домена в IP адрес в фоне. Теперь, когда очередь дойдет до ресурсов, они загрузятся минуя стадию prepresolve. 
+```
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="//ajax.googleapis.com">
+```
 
 
 # Best Practices 
