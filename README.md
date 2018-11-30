@@ -856,9 +856,19 @@ HTTP/2 использует SSl-соединение, что делает сай
 ### 11.2 Exploring how optimization techniques change for HTTP/2 
 
 * Сжатие ресурсов по прежнему актуалльно (минификация, компрессия, оптимизация изображений).
-* Объединение файлов лучше оставить для HTTP/1, для HTTP/2 это может отрицательно сказаться на эффективности кеширования.
+* Объединение файлов лучше оставить для HTTP/1, поскольку при объединении файлов вы уменьшаете эффективность кэширования при изменении одного из активов в составе. Для HTTP/1 этим жертвуют для получения ресурсов как можно скорее, для HTTP/2 это не нужно, открывается возможность обеспечить лучшее кэширование.
 
-### 11.2.1 Asset granularity and caching effectiveness 
+### 11.2.2 Identifying performance antipatterns for HTTP/2 
+Собраны антипаттерны оптимизации для HTTP/2 и почему их стоит избегать.
+
+* **Bundling CSS and JavaScript** - то что было описано выше, про политику кэширования.
+* **Image sprites** - то что было описано выше, про политику кэширования.
+* **Asset inlining** - так же, все инлайн ассеты плохо кэшируются, кэшируются только в контексте документа, в который они встроенны, использование base64 - неэффективно (ниже есть ссылка на декодер), если использовать **Server Push** то инлайновые стили для первого экрана отрисовки не нужны.
+
+### 11.3 Sending assets preemptively with Server Push 
+
+
+
 
 
 
@@ -915,7 +925,6 @@ Now it’s read-write-write-write.
 # Полезные ссылки 
 * [документатция от Гугла по Chrome DevTools](https://developers.google.com/web/fundamentals/performance/why-performance-matters/)
 
-
 # Инструменты 
 ### 1. [Google PageSpeed Insight](https://developers.google.com/speed/pagespeed/insights/)  
 Чтобы лучше понять этот инструмент и его параметры есть хорошая [статья](https://medium.com/web-standards/performance-metrics-ff23c213164e), вкратце:  
@@ -960,3 +969,5 @@ brew install ffmpeg
 ```
 
 `ffmpeg -i input.mp4 -movflags faststart -acodec copy -vcodec copy output.mp4` - [подробнее](http://denis-zavgorodny.github.io/2017/01/30/mp4-web-optimizing/), [утилита](https://www.ffmpeg.org/)
+
+### 7. [base64encode.org](https://www.base64encode.org/)
