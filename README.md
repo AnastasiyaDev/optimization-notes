@@ -889,6 +889,10 @@ Link: </css/styles.min.css>; rel=preload;  as=style
 ```
 Это похоже на **resource hint**, но если просто прописать подсказку в тэге `<link>` это не сработает, нужны именно заголовки. `as` - необязательный атрибут (полный список его значений можно найти [здесь](https://www.w3.org/TR/preload/#link-element-interface-extensions)). 
 
+Убедиться в том, что ресурс получен из **Push** можно с помощью столбца **Initiator** в Network панели хрома.
+Есть еще [консольная утилита](https://nghttp2.org/documentation/nghttp.1.html).
+
+### 11.3.3 Measuring Server Push performance
 
 
 
