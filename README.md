@@ -894,6 +894,31 @@ Link: </css/styles.min.css>; rel=preload;  as=style
 
 ### 11.3.3 Measuring Server Push performance
 
+<table cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td width="500px">
+      <img src="./images/comparison-server-push.png" alt="comparison-server-push" width="100%">
+    </td>
+  </tr>
+</table>
+
+Рекомендации по использованию **Server Push**:
+* Можно одновремменно пушить несколько ресурсов  
+* Можно пушнуть ресурс, которые не нужен на текущей странице, но ожидаем на следующей, на которую перейдет пользователь
+
+### 11.4.1 How HTTP/2 servers deal with HTTP/2-incapable browsers
+Под капотом каждого браузера с поддержкой HTTP/2, есть поддержка HTTP/1. Коммуникация начинается с HTTP/2, если клиент-сайд не умеет в HTTP/2 соединение понижается до HTTP/1. 
+
+### 11.4.3 Serving assets according to browser capability
+Далее в книге рассказывают как определить версии протакола и для node-сервера обработать данные в зависимости от версии 
+
+пакеты **jsdom**, **spdy** или использовать возможности других серверов, например в php-серверах есть переменная  `$_SERVER["SERVER_PROTOCOL"]` 
+
+
+
+# Глава 12 (Automating optimization with gulp)
+
+
 
 
 
