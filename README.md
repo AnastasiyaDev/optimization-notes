@@ -918,7 +918,7 @@ Link: </css/styles.min.css>; rel=preload;  as=style
 
 # Глава 12 (Automating optimization with gulp)
 
-
+Содержит общие сведения о gulp и о популярных тасках для оптимизации ресурсов и процессов автоматизации повседневных задач фронтэндера, в целом достаточно ознакомиться со [скринкастом про Gulp](http://learn.javascript.ru/screencast/gulp)
 
 
 
