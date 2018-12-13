@@ -920,8 +920,25 @@ Link: </css/styles.min.css>; rel=preload;  as=style
 
 Содержит общие сведения о gulp и о популярных тасках для оптимизации ресурсов и процессов автоматизации повседневных задач фронтэндера, в целом достаточно ознакомиться со [скринкастом про Gulp](http://learn.javascript.ru/screencast/gulp)
 
+Какие плагины советуют в книге 
 
+Общие
+`npm i -g gulp-cli gulp`
 
+Основные 
+`npm install gulp-util del gulp-livereload gulp-ext-replace`
+
+HTML-минификатор
+`npm install gulp-htmlmin`
+
+Для CSS
+`npm install gulp-less gulp-postcss autoprefixer autorem cssnano`
+
+Для JS
+`npm install gulp-uglify gulp-concat`
+
+Для изображений
+`npm install gulp-imagemin imagemin-webp imagemin-jpeg-recompress imagemin-pngquant imagemin-gifsicle imagemin-svgo`
 
 
 
