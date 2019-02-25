@@ -234,7 +234,7 @@ img {
      sizes="(min-width:  704px) 50vw,  (min-width:  480px) 75vw, 100vw">
 ```
 ### 5.4.3 Using the `<picture>` element  
-Для больших экранов браузер сам выберет какую картинку ему подтянуть, для маленьких кранов он будет выбирать картинку в соответствии с DPI (1x или 2x): 
+Для больших экранов браузер сам выберет какую картинку ему подтянуть, для маленьких экранов он будет выбирать картинку в соответствии с DPI (1x или 2x): 
 ```
 <picture>
     <source media="(min-width: 704px)"
@@ -288,7 +288,7 @@ svgo -h 	- посмотреть опции оптимизации
 svgo -p 1 -o logo-opt-1.svg logo.svg  - больший процент сжатия, но надо следить чтобы изображение не попячилось (планые линии становятся угловатыми)
 ```
 
-### 6.2.2 Encoding lossy WebP images with imagemin
+### 6.3.1 Encoding lossy WebP images with imagemin
 ```
 npm i imagemin imagemin-webp
 ```
