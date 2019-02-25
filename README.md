@@ -326,7 +326,7 @@ npm i imagemin imagemin-webp
 |TrueType     |ttf        | Все, кроме IE8- |
 |OpenType     |eot        | IE6+ 	    |
 |WOFF 	      |woff       | Все, кроме Android Browser 4.3-  и IE8-|
-|WOFF2        |woff2      | Все современные, кроме IE и плохо в Safari|
+|WOFF2        |woff2      | Все современные, кроме IE и плохо в Safari (уже нет, после обновления в сентябре 2018)|
 
 Плагины для конвертации:
 ```
