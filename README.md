@@ -192,7 +192,7 @@ console.timeStamp('Modal open');
   </tr>
 </table>
 
-
+Интересная статья [CSS и производительность сети](https://css-live.ru/articles/css-i-proizvoditelnost-seti.html)
 
 ## Глава 4 (Understanding critical CSS)
 `<style>` в `<head>` и в нем все стили касающиеся первого видимого окна, они не кешируются, зато быстро отрисовываются, сокращается время до **First Paint** (см. пункт Инструменты, Прогрессивные веб-метрики)
