@@ -1081,6 +1081,12 @@ Now it’s read-write-write-write.
 brew install ffmpeg
 ```
 
-`ffmpeg -i input.mp4 -movflags faststart -acodec copy -vcodec copy output.mp4` - [подробнее](http://denis-zavgorodny.github.io/2017/01/30/mp4-web-optimizing/), [утилита](https://www.ffmpeg.org/)
+`ffmpeg -i input.mp4 -movflags faststart -acodec copy -vcodec copy output.mp4`
+
+Перегнать из gif -> mp4:
+
+`ffmpeg -i 1-test.gif -movflags faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" video.mp4`
+
+[Статья о том, зачем ставить флаг movflags в начало mp4](http://denis-zavgorodny.github.io/2017/01/30/mp4-web-optimizing/), [утилита](https://www.ffmpeg.org/)
 
 ### 7. [base64encode.org](https://www.base64encode.org/)
