@@ -187,7 +187,7 @@ console.timeStamp('Modal open');
 <table cellpadding="0" cellspacing="0" width="100%">
   <tr>
     <td width="500px">
-      <img src="./images/css-selectors.png" alt="comparisonPNG_WebP_DPI" width="100%">
+      <img src="./images/css-selector.png" alt="css-селекторы" width="100%">
     </td>
   </tr>
 </table>
